@@ -2,30 +2,33 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
+use Livewire\Attributes\Rule;
 
 class Form extends Component {
 
-    public $name;
-    public $email;
-    public $password;
+    #[ Rule( 'required', message: 'Nama wajib diisi' ) ]
+    public ?string $name = null;
 
-    public $message;
+    #[ Rule( 'required', message: 'Email wajib diisi' ) ]
+    public ?string $email = null;
+
+    #[ Rule( 'required', message: 'Password wajib diisi' ) ]
+    public ?string $password = null;
+
+    public ?string $message = null;
 
     public function submit() {
-        $validatedData = $this->validate( [
-            'name' => 'min:6',
-            'email' => 'required|email',
-            'password' => 'required'
-        ] );
+        $data = $this->validate();
+
+        User::create( $data );
 
     }
 
-    public function updated( $propertyName ) {
-        $this->validateOnly( $propertyName, [
-            'name' => 'min:6',
-            'email' => 'required|email',
-            'password' => 'required'
+    public function render() {
+        return view( 'livewire.form', [
+            'users' => User::all()
         ] );
     }
 
