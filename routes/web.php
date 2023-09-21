@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('home', function(){
     return view('page.home');
 });
+
+Route::get('content', function(){
+    return view('page.content');
+});
+
