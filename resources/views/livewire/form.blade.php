@@ -1,6 +1,5 @@
-<div class="flex flex-col h-screen justify-center items-center">
+<div class="flex flex-col lg:flex-row gap-10 h-screen justify-center items-center">
     <form wire:submit.prevent="submit">
-
         <div class="mb-6">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                 Name</label>
@@ -11,6 +10,9 @@
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
 
+        </div>
+
+        <div class="font-semibold bg-green-400 container text-end leading-8 text-gray-50">
         </div>
 
         <div class="mb-6">
@@ -44,29 +46,46 @@
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
 
-    <div class="overflow-x-auto mt-2">
-        <table class="table">
+    <div class="overflow-x-auto mt-2 flex flex-col gap-2">
+        <div class="inline-flex gap-2">
+            <input type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-md"
+                wire:model.live="search" />
+        </div>
+
+        <div class="h-full debug w-full">
+
+           @if (count($users)>0)
+           <table class="table">
             <!-- head -->
             <thead>
                 <tr>
                     <th></th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    <th>Action</th>
+
                 </tr>
             </thead>
-            <tbody>
-                <!-- row 1 -->
-               @foreach ($users as $user)
-               <tr>
-                <th>{{ $loop->iteration}}</th>
-                <td>{{ $user->name }}</td>
-                <td> {{ $user->email}} </td>
-                <td>{{ $user->password }}</td>
-              </tr>
-               @endforeach
+            <tbody class="debug">
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td> {{ $user->email }} </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">Update</button>
+                            <button class="btn btn-sm btn-warning">Delete</button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
-    </div>
 
+        @else
+
+        <div class="mt-4 w-[300px] h-[200px] relative overflow-auto">Nothing Users...</div>
+
+           @endif
+        </div>
+    </div>
 </div>

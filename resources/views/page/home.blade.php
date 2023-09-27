@@ -1,3 +1,3 @@
 <x-app>
-   <livewire:form/>
+    <livewire:form />
 </x-app>

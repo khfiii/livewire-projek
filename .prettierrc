@@ -1,0 +1,20 @@
+{
+    "plugins": [],
+    "overrides": [
+        {
+            "files": ["*.blade.php"],
+            "options": {
+                "parser": "blade",
+                "tabWidth": 4,
+                "semi": false,
+                "singleQuote": true,
+                "useTabs": false,
+                "printWidth": 80,
+                "trailingComma": "none",
+                "bracketSpacing": true,
+                "arrowParens": "always",
+                "endOfLine": "auto"
+            }
+        }
+    ]
+}
