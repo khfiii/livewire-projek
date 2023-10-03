@@ -21,12 +21,8 @@ class Form extends Component {
 
     public ?string $notFoundMessage = null;
 
-    public function submit() {
-        $data = $this->validate();
 
-        User::create( $data );
 
-    }
 
     public function render() {
 
@@ -42,5 +38,45 @@ class Form extends Component {
             'users' => $users,
         ] );
     }
+
+
+    public function submit() {
+        $data = $this->validate();
+
+        User::create( $data );
+
+    }
+
+    public function delete($id){
+        $user = User::findOrFail($id);
+
+        // $this->authorize('delete', $user);
+
+        $user->delete();
+    }
+
+    public function update($id)
+    {
+
+
+        $user = User::findOrFail($id);
+    }
+
+    public function select($id)
+    {
+
+
+        $user = User::findOrFail($id);
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->password = $user->password;
+
+    }
+
+
+
+
+
 
 }

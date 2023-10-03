@@ -25,3 +25,7 @@ Route::get('content', function(){
     return view('page.content');
 });
 
+Route::get('accordion', function(){
+    return view('page.acordion');
+});
+

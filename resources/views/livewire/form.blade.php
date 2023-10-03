@@ -46,13 +46,13 @@
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
 
-    <div class="overflow-x-auto mt-2 flex flex-col gap-2">
+    <div class="mt-2 flex flex-col gap-2">
         <div class="inline-flex gap-2">
             <input type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-md"
                 wire:model.live="search" />
         </div>
 
-        <div class="h-full debug w-full">
+        <div class="h-[500px] debug w-[700px]">
 
            @if (count($users)>0)
            <table class="table">
@@ -83,7 +83,7 @@
 
         @else
 
-        <div class="mt-4 w-[300px] h-[200px] relative overflow-auto">Nothing Users...</div>
+        <div class="mt-4 w-[700px] h-[500px] relative overflow-auto">Nothing Users...</div>
 
            @endif
         </div>
